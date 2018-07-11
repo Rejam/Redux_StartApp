@@ -4,7 +4,7 @@ const select_book = book => ({
 })
 
 const deselect_book = () => ({
-  type: "CLEARED_BOOK",
+  type: "CLEARED_BOOK"
 })
 
-export default {select_book, deselect_book}
+export { select_book, deselect_book }
