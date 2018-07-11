@@ -3,8 +3,4 @@ const select_book = book => ({
   payload: book
 })
 
-const deselect_book = () => ({
-  type: "CLEARED_BOOK"
-})
-
-export { select_book, deselect_book }
+export { select_book }
