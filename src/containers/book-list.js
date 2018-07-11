@@ -1,25 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { select_book } from '../actions/index'
+import select_book from '../actions/index'
 //import { bindActionCreators } from 'redux'
 
 class BookList extends React.Component {
-  renderList = () => {
-    return this.props.books.map(book =>
-      <li
-        onClick={() => this.props.select_book(book)}
-        key={book.title}
-        className="list-group-item">
-        {book.title}
-      </li>
-    )
-  }
 
   render() {
+    const { books, select_book } = this.props
+
+    const BookList = () => books.map(book =>
+      <li
+        onClick={ () => select_book(book) }
+        key={ book.title }
+        className="list-group-item">
+        { book.title }
+      </li>
+    )
+    
     return (
       <ul className="list-group col-sm-4">
-        {this.renderList()}
-        {this.props.selectedBook.title}
+        <BookList />
       </ul>
     )
   }
@@ -28,7 +28,6 @@ class BookList extends React.Component {
 // Anthing returned will be props in the container
 const mapStateToProps = state => ({
   books: state.books,
-  selectedBook: state.selectedBook
 })
 
 // function mapDispatchToProps(dispatch) {
