@@ -7,18 +7,18 @@ class BookList extends React.Component {
     const { books, select_book } = this.props
 
     const BookList = () => books.map(book =>
-      <li
+      <button
         onClick={ () => select_book(book) }
         key={ book.title }
-        className="book-item list-group-item">
+        className="list-group-item list-group-item-action">
         { book.title }
-      </li>
+      </button>
     )
     
     return (
-      <ul className="list-group col-sm-4">
+      <div className="list-group-flush col-sm-4">
         <BookList />
-      </ul>
+      </div>
     )
   }
 }
@@ -28,7 +28,5 @@ const mapStateToProps = state => ({
   books: state.books,
 })
 
-const mapDispatchToProps = { select_book }
-
 // Promote from component to container
-export default connect(mapStateToProps, mapDispatchToProps)(BookList)
+export default connect(mapStateToProps, { select_book })(BookList)
